@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متجر الطالب الذكي</title>
+
+<style>
+body {
+  font-family: Arial;
+  margin: 0;
+  background: #f2f2f2;
+}
+
+header {
+  background: linear-gradient(90deg,#0a84ff,#4facfe);
+  color: white;
+  text-align: center;
+  padding: 15px;
+  font-size: 22px;
+}
+
+.container {
+  padding: 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2,1fr);
+  gap: 10px;
+}
+
+.product {
+  background: white;
+  border-radius: 12px;
+  padding: 10px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.product img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.product h3 {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+.price {
+  color: green;
+  font-weight: bold;
+}
+
+button {
+  width: 100%;
+  padding: 8px;
+  background: #0a84ff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  margin-top: 5px;
+}
+
+.cart {
+  position: fixed;
+  bottom: 15px;
+  left: 15px;
+  background: black;
+  color: white;
+  padding: 10px;
+  border-radius: 50px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>📚 متجر الطالب الذكي</header>
+
+<div class="container">
+
+<div class="grid">
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>دفتر ذكي</h3>
+<p class="price">35 ريال</p>
+<button onclick="add('دفتر ذكي')">أضف للسلة</button>
+</div>
+
+<div class="product">
+<img src="https://via.placeholder.com/300">
+<h3>منظم مذاكرة</h3>
+<p class="price">20 ريال</p>
+<button onclick="add('منظم مذاكرة')">أضف للسلة</button>
+</div>
+
+</div>
+
+</div>
+
+<div class="cart" onclick="checkout()">🛒 عرض الطلب</div>
+
+<script>
+let cart = [];
+
+function add(product){
+  cart.push(product);
+  alert("تمت الإضافة للسلة");
+}
+
+function checkout(){
+  if(cart.length === 0){
+    alert("السلة فارغة");
+    return;
+  }
+
+  let phone = "966 591781505;
+  let message = "مرحبا، اريد طلب:\n" + cart.join("\n");
+
+  let url = "https://wa.me/" + phone + "?text=" + encodeURIComponent(message);
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
